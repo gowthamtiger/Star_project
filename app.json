@@ -1,0 +1,22 @@
+{
+  "sourceForRawZone":{
+    "source_bucket":"gowtham-landzonebucket-batch01",
+    "destination_bucket":"gowtham-rawzonebucket-batch01",
+    "source_folder_key":"Data/",
+    "destination_folder_key":"Dataset/"
+  },
+  "source": [
+    "s3://gowtham-rawzonebucket-batch01/Dataset/actives.parquet",
+    "s3://gowtham-rawzonebucket-batch01/Dataset/viewership.parquet"
+  ],
+  "destination": "s3://gowtham-stagingzonebucket-batch01/results/",
+  "delta_table_location": "s3://gowtham-stagingzonebucket-batch01/delta_table/",
+  "transformations": {
+    "advertising_id": "sha2",
+    "user_id": "sha2",
+    "user_longitude": "convert to decimal with 7 precision",
+    "user_latitude": "convert to decimal with 7 precision",
+    "location_source": "Convert to a comma-separated string"
+  },
+  "partitions":["month","date"]
+}
