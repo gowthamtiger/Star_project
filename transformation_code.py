@@ -5,6 +5,7 @@ import json
 import sys
 
 
+
 source_path = SparkContext.getOrCreate().getConf().get('spark.sourcepath', 'default_value')
 print(source_path)
 
